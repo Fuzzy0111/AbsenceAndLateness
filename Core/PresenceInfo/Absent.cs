@@ -13,8 +13,7 @@ namespace Core.PresenceInfo
         private int numberOfAbsence;
 
         public Absent()
-        {
-            student.ID = "";
+        {            
             timeArrived = 8.00;
             numberOfAbsence = 0;
         }
