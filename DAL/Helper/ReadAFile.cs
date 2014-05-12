@@ -29,9 +29,9 @@ namespace BLL
 
         #endregion
 
-        public List<Presence> ReadXMLFile()
+        public List<Absent> ReadXMLFile()
         {
-            List<Presence> newLatecomerList = new List<Presence>();
+            List<Absent> newLatecomerList = new List<Absent>();
             DataSet ds = null;
             try
             {
@@ -43,14 +43,15 @@ namespace BLL
 
                 foreach (DataRow row in ds.Tables[0].AsEnumerable())
                 {
-                    Presence tempArrivedStudent = new Presence();
+                    Absent tempArrivedStudent = new Absent();
                     string studentID = "";
                     string timeArrived = "";
                     studentID = row.Field<string>("StudentID");
                     timeArrived = row.Field<string>("TimeArrived");
 
+                    //how to convert studentID from string to student type?
                     tempArrivedStudent.student = studentID;
-                    tempArrivedStudent.timeArrived = timeArrived;
+                    tempArrivedStudent.timeArrived = double.Parse(timeArrived);
 
                     newLatecomerList.Add(tempArrivedStudent);
                     

@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.PresenceInfo
 {
-    public class Late: Present
+    class Present
     {
-        public int LatenessAmount;
-
-        public Late()
-        {
-            LatenessAmount = 0;
-        }        
     }
 }

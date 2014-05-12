@@ -39,15 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Latecomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReadAFile.cs" />
+    <Compile Include="Helper\ReadAFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AttendanceForm.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helper\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{c401b314-adda-4fbe-9503-aa4b14e9cccc}</Project>

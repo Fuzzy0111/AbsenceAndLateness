@@ -40,7 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PresenceInfo\Late.cs" />
-    <Compile Include="PresenceInfo\Presence.cs" />
+    <Compile Include="PresenceInfo\Absent.cs" />
+    <Compile Include="PresenceInfo\Present.cs" />
     <Compile Include="Student\Address.cs" />
     <Compile Include="Student\ContactInfoPhone.cs" />
     <Compile Include="Student\Name.cs" />

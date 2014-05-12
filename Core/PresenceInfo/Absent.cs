@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace Core.PresenceInfo
 {
-    public class Presence
+    public class Absent
     {
         public Student student;
         public double timeArrived;
+        private int numberOfAbsence;
 
-        public Presence()
+        public Absent()
         {
             student.ID = "";
             timeArrived = 8.00;
+            numberOfAbsence = 0;
         }
     }
 }
