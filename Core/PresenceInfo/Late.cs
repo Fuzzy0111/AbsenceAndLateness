@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.PresenceInfo
 {
-    public class Late: Present
+    public class Late: Absent
     {
         public int LatenessAmount;
 

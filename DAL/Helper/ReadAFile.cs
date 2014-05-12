@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Xml;
-using System.Data;
 using Core.PresenceInfo;
 using System.IO;
 
-namespace BLL
+namespace DAL.Helper
 {
-    class ReadAFile
+    public class ReadAFile
     {
         public string FilePath { get; set; }
 
@@ -19,7 +18,7 @@ namespace BLL
 
         public ReadAFile()
         {
-            this.FilePath = @"c:\Users\jkeedhoo\Documents\Visual Studio 2013\Projects\latecomerDAL\latecomerDAL\LatecomerDocument.XML";
+            this.FilePath = @"c:\Users\jkeedhoo\Documents\Visual Studio 2013\Projects\AbsenceAndLateness\DAL\AttendanceForm.xml";
         }
 
         public ReadAFile(string filePathName)
@@ -50,7 +49,7 @@ namespace BLL
                     timeArrived = row.Field<string>("TimeArrived");
 
                     //how to convert studentID from string to student type?
-                    tempArrivedStudent.student = studentID;
+                    //tempArrivedStudent.student = Convert.ChangeType(studentID, object);
                     tempArrivedStudent.timeArrived = double.Parse(timeArrived);
 
                     newLatecomerList.Add(tempArrivedStudent);
