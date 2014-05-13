@@ -12,6 +12,10 @@ namespace Core.PresenceInfo
         public double TimeArrived { get; set; }
         public int LatenessAmount { get; set; }
 
+        public Late()
+        {
+        }
+
         public Late(Student studentInfo, double timeArrived)
         {
             StudentInfo = studentInfo;

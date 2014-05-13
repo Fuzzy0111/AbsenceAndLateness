@@ -30,9 +30,9 @@ namespace DAL.Helper
 
         #region readXMLFile
 
-        public List<Absent> ReadXMLFile()
+        public List<Late> ReadXMLFile()
         {
-            List<Absent> newAttendanceList = new List<Absent>();
+            List<Late> newAttendanceList = new List<Late>();
             DataSet ds = null;
             try
             {
@@ -44,7 +44,7 @@ namespace DAL.Helper
 
                 foreach (DataRow row in ds.Tables[0].AsEnumerable())
                 {
-                    Absent tempArrivedStudent = new Absent();
+                    
                     string studentID = "";
                     string timeArrived = "";
                     studentID = row.Field<string>("StudentID");
@@ -52,7 +52,8 @@ namespace DAL.Helper
 
                     //how to convert studentID from string to student type?
                     //tempArrivedStudent.student = Convert.ChangeType(studentID, object);
-                    tempArrivedStudent.timeArrived = double.Parse(timeArrived);
+                    Late tempArrivedStudent = new Late();
+                    tempArrivedStudent.TimeArrived = double.Parse(timeArrived);
 
                     newAttendanceList.Add(tempArrivedStudent);
                     

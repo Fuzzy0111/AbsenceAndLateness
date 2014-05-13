@@ -9,6 +9,6 @@ namespace DAL
 {
     public interface IReadAFileRepository
     {
-        List<Absent> ReadXMLFile();
+        List<Late> ReadXMLFile();
     }
 }

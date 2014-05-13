@@ -16,9 +16,9 @@ namespace DAL
             ReadAFileRepository = readAFileRepository;
         }
 
-        public List<Absent> GetAttendanceList()
+        public List<Late> GetAttendanceList()
         {
-            List<Absent> newList = ReadAFileRepository.ReadXMLFile();
+            List<Late> newList = ReadAFileRepository.ReadXMLFile();
 
             return newList;
         }

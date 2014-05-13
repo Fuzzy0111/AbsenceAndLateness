@@ -15,15 +15,6 @@ namespace BLL
             time = 8.15;
         }
         
-        public bool IsOnTime(double timeArrived)
-        {
-            if (time > timeArrived)
-            {
-                return true;
-            }
-
-            else
-                return false;
-        }
+        
     }
 }
