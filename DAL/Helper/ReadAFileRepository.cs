@@ -10,27 +10,29 @@ using System.IO;
 
 namespace DAL.Helper
 {
-    public class ReadAFile
+    public class ReadAFileRepository: IReadAFileRepository
     {
         public string FilePath { get; set; }
 
         #region constructor
 
-        public ReadAFile()
+        public ReadAFileRepository()
         {
             this.FilePath = @"c:\Users\jkeedhoo\Documents\Visual Studio 2013\Projects\AbsenceAndLateness\DAL\AttendanceForm.xml";
         }
 
-        public ReadAFile(string filePathName)
+        public ReadAFileRepository(string filePathName)
         {
             this.FilePath = filePathName;
         }
 
         #endregion
 
+        #region readXMLFile
+
         public List<Absent> ReadXMLFile()
         {
-            List<Absent> newLatecomerList = new List<Absent>();
+            List<Absent> newAttendanceList = new List<Absent>();
             DataSet ds = null;
             try
             {
@@ -52,7 +54,7 @@ namespace DAL.Helper
                     //tempArrivedStudent.student = Convert.ChangeType(studentID, object);
                     tempArrivedStudent.timeArrived = double.Parse(timeArrived);
 
-                    newLatecomerList.Add(tempArrivedStudent);
+                    newAttendanceList.Add(tempArrivedStudent);
                     
                 }
             }
@@ -70,7 +72,8 @@ namespace DAL.Helper
                     ds.Clear();
                 }
             }
-            return newLatecomerList;
+            return newAttendanceList;
         }
+        #endregion
     }
 }

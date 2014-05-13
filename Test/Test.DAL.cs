@@ -7,6 +7,7 @@ using NUnit.Framework;
 using System.Data;
 using DAL.Helper;
 using Core.PresenceInfo;
+using DAL;
 
 namespace Test
 {
@@ -15,13 +16,13 @@ namespace Test
         [TestFixture]
         public class UnitTest
         {
-            private ReadAFile XMLFile1;
-            private ReadAFile FaultyFile1;
+            private IReadAFileRepository XMLFile1 { get; set; }
+            private IReadAFileRepository FaultyFile1 { get; set; } 
 
             [TestFixtureSetUp]
             public void TestFixtureSetupMethod()
             {
-                XMLFile1 = new ReadAFile(@"c:\LatecomerDocument.XML");
+                XMLFile1 = new ReadAFileRepository(@"c:\LatecomerDocument.XML");
             }
 
             [TestFixtureTearDown]

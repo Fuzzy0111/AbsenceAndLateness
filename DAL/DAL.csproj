@@ -39,9 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\Latecomer.cs" />
+    <Compile Include="IReadAFileRepository.cs" />
+    <Compile Include="ListOfAttendance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helper\ReadAFile.cs" />
+    <Compile Include="Helper\ReadAFileRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AttendanceForm.xml" />
