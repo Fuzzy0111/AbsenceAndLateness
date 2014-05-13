@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Attendance>
+  <Date>
+    sx
+  </Date>
   <Student>
     <StudentID>1404</StudentID>
     <TimeArrived>09.00</TimeArrived>

@@ -16,18 +16,9 @@ namespace BLL
             }
         }
 
-        public int Calc_num_lateness(bool isLate, int LatenessAmount)
+        public int CalcNumLateness(bool isLate, int latenessAmount)
         {
-            if (isLate)
-            {
-                LatenessAmount += 1;
-            }
-            else
-            {
-                LatenessAmount += 0;
-            }
-
-            return LatenessAmount;
+            return latenessAmount += isLate ? 1 : 0;
         }
     }
 }

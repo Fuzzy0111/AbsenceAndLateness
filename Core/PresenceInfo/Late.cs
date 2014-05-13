@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace Core.PresenceInfo
 {
-    public class Late: Absent
+    public class Late
     {
-        public int LatenessAmount;
+        public Student StudentInfo { get; set; }
+        public double TimeArrived { get; set; }
+        public int LatenessAmount { get; set; }
 
-        public Late()
+        public Late(Student studentInfo, double timeArrived)
         {
+            StudentInfo = studentInfo;
+            TimeArrived = timeArrived;
             LatenessAmount = 0;
         }        
     }

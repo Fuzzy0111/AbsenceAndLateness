@@ -9,20 +9,20 @@ namespace Core
     public class Student
     {
         public string ID;
-        public Name name;
-        public Address address;
-        public ContactInfoPhone contactInfoPhone;
+        public FullName Name;
+        public Address ResidentialAddress { get; set; }
+        public ContactInfoPhone PhoneNumber {get; set; }
 
         public Student()
         {
             ID = "";
-            name.first = "";
-            name.last = "";
-            address.street = "";
-            address.city = "";
-            contactInfoPhone.home = "";
-            contactInfoPhone.mobile = "";
-            contactInfoPhone.responsibleParty = "";
+            Name.first = "";
+            Name.last = "";
+            ResidentialAddress.street = "";
+            ResidentialAddress.city = "";
+            PhoneNumber.home = "";
+            PhoneNumber.mobile = "";
+            PhoneNumber.responsibleParty = "";
 
         }
     }

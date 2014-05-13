@@ -8,13 +8,13 @@ namespace Core
 {
     public class Address
     {
-        public string street;
-        public string city;
+        public string Street { get; set; }
+        public string City { get; set; }
 
-        public Address()
+        public Address(string street, string city)
         {
-            street = "";
-            city = "";
+            Street = street;
+            City = city;
         }
     }
 }

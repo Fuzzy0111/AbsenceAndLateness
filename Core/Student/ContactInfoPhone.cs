@@ -8,15 +8,15 @@ namespace Core
 {
     public class ContactInfoPhone
     {
-        public string home;
-        public string responsibleParty;
-        public string mobile;
+        public string Home { get; set; }
+        public string ResponsibleParty { get; set; }
+        public string Mobile { get; set; }
 
-        public ContactInfoPhone()
+        public ContactInfoPhone(string home, string responsibleParty, string mobile)
         {
-            home = "";
-            mobile = "";
-            responsibleParty = "";
+            Home = home;
+            Mobile = mobile;
+            ResponsibleParty = responsibleParty;
         }
     }
 }
