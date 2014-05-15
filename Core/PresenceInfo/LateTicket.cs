@@ -19,12 +19,11 @@ namespace Core.PresenceInfo
             StudentInfo = new Student();
         }
 
-        public LateTicket(int day, int month, int year, string firstName, string lastName, double timeArrived)
+        public LateTicket(int ID, int day, int month, int year, string firstName, string lastName, double timeArrived)
         {
-            ID = 1;
+            this.ID = ID;
             Today = new Date(day, month, year);
-            StudentInfo.Name.First = firstName;
-            StudentInfo.Name.Last = lastName;
+            StudentInfo = new Student(firstName, lastName);            
             TimeArrived = timeArrived;
             LatenessAmount = 1;
         }        

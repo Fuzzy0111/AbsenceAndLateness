@@ -12,9 +12,12 @@ namespace Core
         public string City { get; set; }
 
         public Address()
+        { }
+
+        public Address(string street, string city)
         {
-            Street = " ";
-            City = " ";
+            Street = street;
+            City = city;
         }
     }
 }
