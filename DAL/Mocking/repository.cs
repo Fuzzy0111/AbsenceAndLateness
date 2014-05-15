@@ -49,7 +49,7 @@ namespace DAL.Mocking
             return mockLateList;
         }
 
-        public LateTicket DeleteData(int ticketID)
+        public List<LateTicket> DeleteData(int ticketID)
         {
             LateTicket tempTicket = new LateTicket();
             List<LateTicket> mockLateList = MockingDataSource();
@@ -58,13 +58,12 @@ namespace DAL.Mocking
                 bool mustDelete = true;
                 mustDelete = (ticket.ID == ticketID) ;
                 if (mustDelete)
-                {
-                    
+                {                   
                     tempTicket = ticket;
-                    mockLateList.Remove(ticket);
                 }                
             }
-            return tempTicket;
+            mockLateList.Remove(tempTicket);
+            return mockLateList;
         }        
 
         public List<LateTicket> EditData(int ticketID, string firstNameToEdit, string lastNameToEdit, double arrivalTimeToEdit)

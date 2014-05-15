@@ -42,11 +42,13 @@ namespace Test
         }
 
 		[Test]
-		public void DeleteData_ShouldReturnID5()
+		public void DeleteData_ShouldReturn6item()
         {
-            LateTicket testTicket = MockRepository.DeleteData(5);
+            List<LateTicket> testTicket = MockRepository.DeleteData(5);
 
-            Assert.AreEqual(5, testTicket.ID);
+            Assert.AreEqual(6, testTicket.Count);
         }
+
+		
     }
 }
