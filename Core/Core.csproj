@@ -39,7 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PresenceInfo\Late.cs" />
+    <Compile Include="PresenceInfo\LateTicket.cs" />
+    <Compile Include="PresenceInfo\Date.cs" />
     <Compile Include="Student\Address.cs" />
     <Compile Include="Student\ContactInfoPhone.cs" />
     <Compile Include="Student\FullName.cs" />

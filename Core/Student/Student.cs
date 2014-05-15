@@ -14,16 +14,15 @@ namespace Core
         public ContactInfoPhone PhoneNumber {get; set; }
 
         public Student()
-        {
-            ID = "";
-            Name.first = "";
-            Name.last = "";
-            ResidentialAddress.street = "";
-            ResidentialAddress.city = "";
-            PhoneNumber.home = "";
-            PhoneNumber.mobile = "";
-            PhoneNumber.responsibleParty = "";
+        { }
 
+        public Student(string first, string last)
+        {
+            ID = " ";
+            Name = new FullName(first, last);
+            ResidentialAddress = new Address();
+            PhoneNumber = new ContactInfoPhone();
+            
         }
     }
 }

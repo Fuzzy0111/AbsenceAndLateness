@@ -34,7 +34,7 @@ namespace Test
             [Test]
             public void TestReadFileXML_1of4_ShouldReturn4Latecomer()
             {
-                List<Absent> myList = XMLFile1.ReadXMLFile();
+                List<LateTicket> myList = XMLFile1.ReadXMLFile();
                 Assert.AreEqual(4, myList.Count);
             }
 

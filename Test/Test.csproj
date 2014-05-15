@@ -43,10 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.DAL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{c9077fcd-6ba2-43b1-84f6-595eebb112a4}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{c401b314-adda-4fbe-9503-aa4b14e9cccc}</Project>
       <Name>Core</Name>

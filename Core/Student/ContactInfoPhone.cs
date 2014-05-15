@@ -12,11 +12,11 @@ namespace Core
         public string ResponsibleParty { get; set; }
         public string Mobile { get; set; }
 
-        public ContactInfoPhone(string home, string responsibleParty, string mobile)
+        public ContactInfoPhone()
         {
-            Home = home;
-            Mobile = mobile;
-            ResponsibleParty = responsibleParty;
+            Home = " ";
+            Mobile = " ";
+            ResponsibleParty = " ";
         }
     }
 }

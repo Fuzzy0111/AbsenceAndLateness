@@ -11,14 +11,17 @@ namespace DAL
     {
         public IReadAFileRepository ReadAFileRepository{get; set;}
 
+        public ListOfAttendance()
+        { }
+
         public ListOfAttendance(IReadAFileRepository readAFileRepository)
         {
             ReadAFileRepository = readAFileRepository;
         }
 
-        public List<Late> GetAttendanceList()
+        public List<LateTicket> GetAttendanceList()
         {
-            List<Late> newList = ReadAFileRepository.ReadXMLFile();
+            List<LateTicket> newList = ReadAFileRepository.ReadXMLFile();
 
             return newList;
         }

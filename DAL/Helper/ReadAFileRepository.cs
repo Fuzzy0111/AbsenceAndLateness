@@ -30,9 +30,9 @@ namespace DAL.Helper
 
         #region readXMLFile
 
-        public List<Late> ReadXMLFile()
+        public List<LateTicket> ReadXMLFile()
         {
-            List<Late> newAttendanceList = new List<Late>();
+            List<LateTicket> newAttendanceList = new List<LateTicket>();
             DataSet ds = null;
             try
             {
@@ -49,14 +49,11 @@ namespace DAL.Helper
                     string timeArrived = "";
                     studentID = row.Field<string>("StudentID");
                     timeArrived = row.Field<string>("TimeArrived");
-
-                    //how to convert studentID from string to student type?
-                    //tempArrivedStudent.student = Convert.ChangeType(studentID, object);
-                    Late tempArrivedStudent = new Late();
+                                        
+                    LateTicket tempArrivedStudent = new LateTicket();
                     tempArrivedStudent.TimeArrived = double.Parse(timeArrived);
-
-                    newAttendanceList.Add(tempArrivedStudent);
-                    
+                    tempArrivedStudent.StudentInfo.ID = studentID;
+                    newAttendanceList.Add(tempArrivedStudent);                    
                 }
             }
 
