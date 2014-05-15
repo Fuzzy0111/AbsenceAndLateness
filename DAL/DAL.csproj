@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="IReadAFileRepository.cs" />
     <Compile Include="ListOfAttendance.cs" />
-    <Compile Include="Mocking\repository.cs" />
+    <Compile Include="Mocking\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helper\ReadAFileRepository.cs" />
   </ItemGroup>
