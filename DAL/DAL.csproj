@@ -43,7 +43,7 @@
     <Compile Include="ListOfAttendance.cs" />
     <Compile Include="Mocking\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helper\ReadAFileRepository.cs" />
+    <Compile Include="ReadAFileRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AttendanceForm.xml" />

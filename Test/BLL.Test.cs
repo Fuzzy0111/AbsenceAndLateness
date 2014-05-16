@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using BLL;
+using DAL.Mocking;
+using Core.PresenceInfo;
+using Core;
+using Core.StudentInfo;
 
 namespace Test
 {
@@ -14,27 +18,220 @@ namespace Test
 
         public class UnitTestBLL
         {
-            private LateDirectory NewDirectory { get; set; }
+            private Repository TestRepository { get; set; }
+            private Person TestPerson { get; set; }
+            private LateTicket TestTicket { get; set; }
+            private Student TestStudent { get; set; }
+            private ResponsibleParty TestRelative { get; set; }
+
 
             [TestFixtureSetUp]
             public void TestFixtureSetupMethod()
             {
-                NewDirectory = new LateDirectory();
+                TestRepository = new Repository();
+                TestPerson = new Person("first", "second", "street", "city");
+                TestTicket = new LateTicket("testTicketID");
+                TestStudent = new Student("testID");
+                TestRelative = new ResponsibleParty("first", "last", "testNumber", "testStreet", "testCity");
             }
 
             [TestFixtureTearDown]
             public void TestFixtureTearDownMethod()
             {
-                NewDirectory = null;
+                TestRepository = null;
+                TestStudent = null;
+                TestTicket = null;
+                TestRelative = null;
             }
 
             [Test]
-            public void TestCalculateLatenessAmount_1of4_ShouldReturn1()
+            public void TestFullNameHasAFirstAndLast()
             {
-                NewDirectory.LateStudent.StudentInfo.ID = "1400";
-                int amount = NewDirectory.CalculateLatenessAmount(NewDirectory.LateStudent.StudentInfo.ID);
-                Assert.AreEqual(1, amount);
+                FullName Name = new FullName("testFirst", "testLast");
+                Assert.NotNull(Name.First);
+                Assert.NotNull(Name.Last);
             }
+
+            [Test]
+            public void TestThereExistsAPerson()
+            {
+                Assert.NotNull(TestPerson);
+            }
+
+            [Test]
+            public void TestPersonHasAName()
+            {
+                Assert.NotNull(TestPerson.Name);
+            }
+     
+            [Test]
+            public void TestPersonHasAPhoneNumber()
+            {
+                Assert.IsNotNull(TestPerson.ContactNumber);
+            }
+
+            [Test]
+            public void TestResidentialAddressHasStreetAndCity()
+            {
+                ResidentialAddress testAddress = new ResidentialAddress("testStreet", "testCity");
+                Assert.NotNull(testAddress.Street);
+                Assert.NotNull(testAddress.City);
+            }
+            
+            [Test]
+            public void TestPersonHasAnAddress()
+            {
+                Assert.NotNull(TestPerson.HomeAddress);
+            }
+
+            /// <summary>
+            /// To promote the Liskov Substitution Principle
+            /// </summary>
+            [Test]
+            public void TestEnsureAStudentIsAPerson()
+            {
+                Assert.IsInstanceOf(TestPerson.GetType(), TestStudent);
+            }
+            
+            [Test]
+            public void TestStudentHasAName()
+            {
+                TestStudent.Name = new FullName("testFirstName", "testLastName");
+                Assert.NotNull(TestStudent.Name.First);
+                Assert.NotNull(TestStudent.Name.Last);
+            }     
+
+            [Test]
+            public void TestStudentHasAnID()
+            {
+                TestStudent.ID = "10";
+                Assert.NotNull(TestStudent.ID);
+            }
+
+            [Test]
+            public void TestEnsureAResponsiblePartyIsAPerson()
+            {
+                Assert.IsInstanceOf(TestPerson.GetType(), TestRelative);
+            }
+
+            [Test]
+            public void TestResponsiblePartyHasAName()
+            {
+                FullName testName = new FullName("first", "last");                
+                Assert.AreEqual(testName.First, TestRelative.Name.First);
+                Assert.AreEqual(testName.Last, TestRelative.Name.Last);
+            }            
+
+            [Test]
+            public void TestStudentHasAResponsibleParty()
+            {                
+                TestStudent.PersonResponsible = TestRelative;
+                Assert.NotNull(TestStudent.PersonResponsible);
+            }
+
+            [Test]
+            public void TestPhoneNumberCanBeMobileAndHome()
+            {
+                PhoneNumber testNumber = new PhoneNumber("testHome", "testMobile");
+                Assert.NotNull(testNumber.Home);
+                Assert.NotNull(testNumber.Mobile);
+            }
+
+            public void TestPossibleToHaveOnlyOnePhoneNumber()
+            {
+                PhoneNumber testNumber = new PhoneNumber("testNumber");
+                Assert.NotNull(testNumber.ContactNumber);
+            }
+
+            [Test]
+            public void TestStudentAllowedNotToHaveAContactNumber()
+            {
+                TestStudent.ContactNumber = new PhoneNumber();
+                Assert.Null(TestStudent.ContactNumber.Home);
+                Assert.Null(TestStudent.ContactNumber.Mobile);
+            }
+
+            [Test]
+            public void TestResponsiblePartyMustHaveAContactNumber()
+            {                
+                PhoneNumber testPhoneNumber = new PhoneNumber();
+                testPhoneNumber = TestRelative.ContactNumber;
+                Assert.NotNull(testPhoneNumber);
+            }
+
+            [Test]
+            public void TestResponsiblePartyCanHaveBothHomeAndMobileNumber()
+            {
+                ResponsibleParty testRelative1 = new ResponsibleParty("first", "last", "testHomeNumber", "testMobileNumber", "testStreet", "testCity");
+                PhoneNumber testPhoneNumber = new PhoneNumber();
+                testPhoneNumber.Home = testRelative1.ContactNumber.Home;
+                testPhoneNumber.Mobile = testRelative1.ContactNumber.Mobile;
+                Assert.NotNull(testPhoneNumber.Home);
+                Assert.NotNull(testPhoneNumber.Mobile);
+            }            
+
+            [Test]
+            public void TestResponsiblePartyHasAResidentialAddress()
+            {                
+                ResidentialAddress testAddress = new ResidentialAddress("testStreet", "testCity");
+                testAddress = TestRelative.HomeAddress;
+                Assert.NotNull(testAddress);
+            }
+
+            [Test]
+            public void TestResponsiblePartyHasProperAddressWithStreetAndCity()
+            {
+                ResidentialAddress testAddress = new ResidentialAddress("testStreet", "testCity");
+                testAddress = TestRelative.HomeAddress;
+                Assert.NotNull(testAddress.City);
+                Assert.NotNull(testAddress.Street);
+            }
+
+            [Test]
+            public void TestLateTicketExists()
+            {
+                Assert.NotNull(TestTicket);
+            }
+
+            [Test]
+            public void TestLateTicketHasAnID()
+            {
+                Assert.NotNull(TestTicket.ID);
+            }
+
+            [Test]
+            public void TestLateTicketHasStudentInfo()
+            {
+                TestTicket.StudentInfo = new Student("testID");
+                TestTicket.StudentInfo = TestStudent;
+                Assert.NotNull(TestTicket.StudentInfo);                
+            }
+
+            [Test]
+            public void TestLateTicketHasArrivalTime()
+            {
+                TestTicket.IssueDate = new Date(16, 5, 2014);
+                Assert.NotNull(TestTicket.IssueDate);
+                Assert.AreEqual(16, TestTicket.IssueDate.Day);
+                Assert.AreEqual(5, TestTicket.IssueDate.Month);
+                Assert.AreEqual(2014, TestTicket.IssueDate.Year);
+            }
+
+            [Test]
+            public void TestCalculateLatenessAmountShouldReturn2()
+            {
+                LateDirectory newDirectory = new LateDirectory("testTicketID");
+                int amount = newDirectory.CalculateLatenessAmount("Jane", "Smith");
+                Assert.AreEqual(2, amount);
+            }
+
+            [Test]
+            public void TestRetrieveCorrectDataShouldReturnRita()
+            {
+                LateDirectory newDirectory = new LateDirectory("testTicketID");
+                TestTicket = newDirectory.RetrieveParticularTicketData("3");
+                Assert.AreEqual("Rita", TestTicket.StudentInfo.Name.First);
+            }            
         }
     }
 }

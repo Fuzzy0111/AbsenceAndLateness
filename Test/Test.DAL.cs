@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using System.Data;
-using DAL.Helper;
 using Core.PresenceInfo;
 using DAL;
 
@@ -16,27 +15,27 @@ namespace Test
         [TestFixture]
         public class UnitTest
         {
-            private IReadAFileRepository XMLFile1 { get; set; }
-            private IReadAFileRepository FaultyFile1 { get; set; } 
+            //private IReadAFileRepository XMLFile1 { get; set; }
+            //private IReadAFileRepository FaultyFile1 { get; set; } 
 
-            [TestFixtureSetUp]
-            public void TestFixtureSetupMethod()
-            {
-                XMLFile1 = new ReadAFileRepository(@"c:\LatecomerDocument.XML");
-            }
+            //[TestFixtureSetUp]
+            //public void TestFixtureSetupMethod()
+            //{
+            //    XMLFile1 = new ReadAFileRepository(@"c:\LatecomerDocument.XML");
+            //}
 
-            [TestFixtureTearDown]
-            public void TestFixtureTearDownMethod()
-            {
-                XMLFile1 = null;
-            }
+            //[TestFixtureTearDown]
+            //public void TestFixtureTearDownMethod()
+            //{
+            //    XMLFile1 = null;
+            //}
 
-            [Test]
-            public void TestReadFileXML_1of4_ShouldReturn4Latecomer()
-            {
-                List<LateTicket> myList = XMLFile1.ReadXMLFile();
-                Assert.AreEqual(4, myList.Count);
-            }
+            //[Test]
+            //public void TestReadFileXML_1of4_ShouldReturn4Latecomer()
+            //{
+            //    List<LateTicket> myList = XMLFile1.ReadXMLFile();
+            //    Assert.AreEqual(4, myList.Count);
+            //}
 
         }
     }

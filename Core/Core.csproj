@@ -41,11 +41,13 @@
   <ItemGroup>
     <Compile Include="PresenceInfo\LateTicket.cs" />
     <Compile Include="PresenceInfo\Date.cs" />
-    <Compile Include="Student\Address.cs" />
-    <Compile Include="Student\ContactInfoPhone.cs" />
-    <Compile Include="Student\FullName.cs" />
+    <Compile Include="StudentInfo\Person.cs" />
+    <Compile Include="StudentInfo\ResidentialAddress.cs" />
+    <Compile Include="StudentInfo\PhoneNumber.cs" />
+    <Compile Include="StudentInfo\FullName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student\Student.cs" />
+    <Compile Include="StudentInfo\ResponsibleParty.cs" />
+    <Compile Include="StudentInfo\Student.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

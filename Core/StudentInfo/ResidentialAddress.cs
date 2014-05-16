@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public class Address
+    public class ResidentialAddress
     {
         public string Street { get; set; }
         public string City { get; set; }
 
-        public Address()
-        { }
-
-        public Address(string street, string city)
+        public ResidentialAddress(string street, string city)
         {
             Street = street;
             City = city;

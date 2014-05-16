@@ -37,14 +37,14 @@ namespace Test
 		[Test]
 		public void WriteToDataSource_ShouldReturn8()
         {
-            List<LateTicket> testTicket = MockRepository.WriteToDataSource(10, 03, 2014, "Jacob", "Will", 8.35);
+            List<LateTicket> testTicket = MockRepository.WriteToDataSource("15", 10, 03, 2014, "9", "Jacob", "Will", 8.35);
             Assert.AreEqual(8, testTicket.Count);
         }
 
 		[Test]
 		public void DeleteData_ShouldReturn6item()
         {
-            List<LateTicket> testTicket = MockRepository.DeleteData(5);
+            List<LateTicket> testTicket = MockRepository.DeleteData("5");
 
             Assert.AreEqual(6, testTicket.Count);
         }

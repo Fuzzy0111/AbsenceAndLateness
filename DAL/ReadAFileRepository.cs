@@ -8,7 +8,7 @@ using System.Xml;
 using Core.PresenceInfo;
 using System.IO;
 
-namespace DAL.Helper
+namespace DAL
 {
     public class ReadAFileRepository: IReadAFileRepository
     {
@@ -50,7 +50,7 @@ namespace DAL.Helper
                     studentID = row.Field<string>("StudentID");
                     timeArrived = row.Field<string>("TimeArrived");
                                         
-                    LateTicket tempArrivedStudent = new LateTicket();
+                    LateTicket tempArrivedStudent = new LateTicket("ticketID");
                     tempArrivedStudent.TimeArrived = double.Parse(timeArrived);
                     tempArrivedStudent.StudentInfo.ID = studentID;
                     newAttendanceList.Add(tempArrivedStudent);                    
