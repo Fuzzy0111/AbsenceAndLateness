@@ -21,6 +21,7 @@ namespace Test
             private Repository TestRepository { get; set; }
             private Person TestPerson { get; set; }
             private LateTicket TestTicket { get; set; }
+            private LateTicket TestTicketIssue { get; set; }
             private Student TestStudent { get; set; }
             private ResponsibleParty TestRelative { get; set; }
 
@@ -31,6 +32,7 @@ namespace Test
                 TestRepository = new Repository();
                 TestPerson = new Person("first", "second", "street", "city");
                 TestTicket = new LateTicket("testTicketID");
+                TestTicketIssue = new LateTicket("testTicketID", 19, 5, 2010, "1402", "Jane", "Mart", 08.35);
                 TestStudent = new Student("testID");
                 TestRelative = new ResponsibleParty("first", "last", "testNumber", "testStreet", "testCity");
             }
@@ -196,8 +198,8 @@ namespace Test
             [Test]
             public void TestLateTicketHasAnID()
             {
-                Assert.NotNull(TestTicket.ID);
-            }
+                Assert.NotNull(TestTicket.ID);                
+            }            
 
             [Test]
             public void TestLateTicketHasStudentInfo()
@@ -215,6 +217,14 @@ namespace Test
                 Assert.AreEqual(16, TestTicket.IssueDate.Day);
                 Assert.AreEqual(5, TestTicket.IssueDate.Month);
                 Assert.AreEqual(2014, TestTicket.IssueDate.Year);
+            }
+
+            [Test]
+            public void TestLateTicketWhenIssuedHasAnIssueDateNameAndArrivalTime()
+            {
+                Assert.NotNull(TestTicketIssue.IssueDate);
+                Assert.NotNull(TestTicketIssue.TimeArrived);
+                Assert.NotNull(TestTicketIssue.StudentInfo.Name);
             }
 
             [Test]
