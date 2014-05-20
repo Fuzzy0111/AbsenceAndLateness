@@ -10,6 +10,7 @@ namespace DAL.Mocking
 {
     public class Repository
     {
+        #region Mocking Data Source
 
         public List<LateTicket> MockingDataSource()
         {
@@ -33,6 +34,9 @@ namespace DAL.Mocking
             return mockLateList;
         }
 
+        #endregion
+
+        #region Public Methods 
 
         public List<LateTicket> WriteToDataSource(string ticketID, int year, int month, int day, string studentID, string studentFirstName, string studentLastName, double arrivalTime)
         {
@@ -81,5 +85,7 @@ namespace DAL.Mocking
             }
             return mockLateList;
         }
+
+        #endregion
     }
 }

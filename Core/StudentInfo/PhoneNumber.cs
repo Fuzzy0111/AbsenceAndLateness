@@ -22,7 +22,6 @@ namespace Core
 
         #endregion 
 
-
         #region Constructors
 
         public PhoneNumber()

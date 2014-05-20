@@ -6,14 +6,24 @@ using System.Threading.Tasks;
 using Core;
 using Core.PresenceInfo;
 using DAL.Mocking;
+using System.ComponentModel.DataAnnotations;
 
 namespace BLL
 {
     public class LateDirectory
     {
+        #region Properties
+
         private LateTicket LateStudent { get; set; }
+        
         private double Time { get; set; }
+
+        [Range(0,251)]
         private int LatenessAmount { get; set; }
+
+        #endregion
+
+        #region Constructor
 
         public LateDirectory(string ticketID)
         {
@@ -21,6 +31,10 @@ namespace BLL
             Time = 8.00;
             LatenessAmount = 0;
         }
+
+        #endregion 
+
+        #region Public Methods
 
         public int CalculateLatenessAmountOfParticularStudent(string studentFirstName, string studentLastName)
         {
@@ -91,6 +105,8 @@ namespace BLL
             List<LateTicket> allLateTickets = newList.MockingDataSource();
 
             return allLateTickets;
-        }        
+        }
+
+        #endregion
     }
 }

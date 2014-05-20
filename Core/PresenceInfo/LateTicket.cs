@@ -7,17 +7,27 @@ using System.Threading.Tasks;
 namespace Core.PresenceInfo
 {
     public class LateTicket
-    {       
+    {
+        #region Properties
+
         public string ID { get; set; }
         //public Date IssueDate { get; set; }
         public DateTime IssueDate { get; set; }
         public Student StudentInfo { get; set; }
-        public double TimeArrived { get; set; }       
+        public double TimeArrived { get; set; }
+
+        #endregion
+
+        #region Constructor
 
         public LateTicket(string ID)
         {
             this.ID = ID;
         }
+
+        #endregion
+
+        #region Public Methods
 
         public LateTicket(string ID, string studentID)
         {
@@ -30,7 +40,9 @@ namespace Core.PresenceInfo
             this.ID = ID;
             IssueDate = new DateTime(year, month, day);
             StudentInfo = new Student(studentID, firstName, lastName);            
-            TimeArrived = timeArrived;            
-        }                          
+            TimeArrived = timeArrived;
+        }
+
+        #endregion
     }
 }

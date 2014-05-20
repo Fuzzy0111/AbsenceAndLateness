@@ -7,7 +7,9 @@ using Core.StudentInfo;
 namespace Core.StudentInfo
 {
     public class ResponsibleParty: Person
-    {    
+    {
+        #region Constructors
+
         public ResponsibleParty(string first, string last, string contactNumber, string street, string city)
         {            
             Name = new FullName(first, last);
@@ -21,5 +23,7 @@ namespace Core.StudentInfo
             ContactNumber = new PhoneNumber(homeNumber, mobileNumber);
             HomeAddress = new ResidentialAddress(street, city);
         }
+
+        #endregion
     }
 }

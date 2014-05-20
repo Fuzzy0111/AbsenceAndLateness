@@ -10,11 +10,17 @@ namespace Core
 {
     public class Student : Person
     {
+        #region Properties
+
         [StringLength(3)]
-        public string ID; 
+        public string ID { get; set; } 
       
-        public ResponsibleParty PersonResponsible { get; set; }        
-        
+        public ResponsibleParty PersonResponsible { get; set; }
+
+        #endregion
+
+        #region Constructor
+
         public Student(string studentID)
         {
             this.ID = studentID;
@@ -32,7 +38,9 @@ namespace Core
             Name = new FullName(first, last);
             PersonResponsible = new ResponsibleParty(responsiblePartyFirstName, responsiblePartyLastName, responsiblePartyMobileNumber, responsiblePartyHomeAddressStreet, responsiblePartyHomeAddressCity);
             HomeAddress = new ResidentialAddress(studentStreet, studentCity);
-            ContactNumber = new PhoneNumber();            
-        }        
+            ContactNumber = new PhoneNumber();
+        }
+
+        #endregion
     }
 }
