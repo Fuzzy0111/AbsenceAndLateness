@@ -32,7 +32,7 @@ namespace Test
                 TestRepository = new Repository();
                 TestPerson = new Person("first", "second", "street", "city");
                 TestTicket = new LateTicket("testTicketID");
-                TestTicketIssue = new LateTicket("testTicketID", 19, 5, 2010, "1402", "Jane", "Mart", 08.35);
+                TestTicketIssue = new LateTicket("testTicketID", 2014, 5, 19, "1402", "Jane", "Mart", 08.35);
                 TestStudent = new Student("testID");
                 TestRelative = new ResponsibleParty("first", "last", "testNumber", "testStreet", "testCity");
             }
@@ -212,7 +212,7 @@ namespace Test
             [Test]
             public void TestLateTicketHasArrivalTime()
             {
-                TestTicket.IssueDate = new Date(16, 5, 2014);
+                TestTicket.IssueDate = new DateTime(2014, 5, 16);
                 Assert.NotNull(TestTicket.IssueDate);
                 Assert.AreEqual(16, TestTicket.IssueDate.Day);
                 Assert.AreEqual(5, TestTicket.IssueDate.Month);

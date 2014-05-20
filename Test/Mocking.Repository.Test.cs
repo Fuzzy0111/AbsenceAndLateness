@@ -37,7 +37,7 @@ namespace Test
 		[Test]
 		public void WriteToDataSource_ShouldReturn8()
         {
-            List<LateTicket> testTicket = MockRepository.WriteToDataSource("15", 10, 03, 2014, "9", "Jacob", "Will", 8.35);
+            List<LateTicket> testTicket = MockRepository.WriteToDataSource("15", 2014, 03, 10, "9", "Jacob", "Will", 8.35);
             Assert.AreEqual(8, testTicket.Count);
         }
 
