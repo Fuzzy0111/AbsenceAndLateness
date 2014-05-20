@@ -31,10 +31,6 @@ namespace Core.PresenceInfo
             IssueDate = new DateTime(year, month, day);
             StudentInfo = new Student(studentID, firstName, lastName);            
             TimeArrived = timeArrived;            
-        }
-
-        
-
-              
+        }                          
     }
 }

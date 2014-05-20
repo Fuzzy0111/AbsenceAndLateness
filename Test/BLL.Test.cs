@@ -16,7 +16,7 @@ namespace Test
     {
         [TestFixture]
 
-        public class UnitTestBLL
+        private class UnitTestBLL
         {
             private Repository TestRepository { get; set; }
             private Person TestPerson { get; set; }
@@ -47,19 +47,19 @@ namespace Test
             }
 
             [Test]
+            public void TestThereExistsAPerson()
+            {
+                Assert.NotNull(TestPerson);
+            }
+
+            [Test]
             public void TestFullNameHasAFirstAndLast()
             {
                 FullName Name = new FullName("testFirst", "testLast");
                 Assert.NotNull(Name.First);
                 Assert.NotNull(Name.Last);
             }
-
-            [Test]
-            public void TestThereExistsAPerson()
-            {
-                Assert.NotNull(TestPerson);
-            }
-
+            
             [Test]
             public void TestPersonHasAName()
             {
@@ -228,20 +228,59 @@ namespace Test
             }
 
             [Test]
+            public void TestAssertLatenessDirectoryIsNotNull()
+            {
+                LateDirectory newDirectory = new LateDirectory("testTickedID");
+                Assert.NotNull(newDirectory);
+            }
+
+            [Test]
             public void TestCalculateLatenessAmountShouldReturn2()
             {
                 LateDirectory newDirectory = new LateDirectory("testTicketID");
-                int amount = newDirectory.CalculateLatenessAmount("Jane", "Smith");
+                int amount = newDirectory.CalculateLatenessAmountOfParticularStudent("Jane", "Smith");
                 Assert.AreEqual(2, amount);
             }
 
             [Test]
-            public void TestRetrieveCorrectDataShouldReturnRita()
+            public void TestRetrieveCorrectDataByTicketID()
             {
                 LateDirectory newDirectory = new LateDirectory("testTicketID");
                 TestTicket = newDirectory.RetrieveParticularTicketData("3");
                 Assert.AreEqual("Rita", TestTicket.StudentInfo.Name.First);
-            }            
+                Assert.AreEqual("Ram", TestTicket.StudentInfo.Name.Last);
+                Assert.AreEqual(8.26, TestTicket.TimeArrived);
+                Assert.AreEqual(2014, TestTicket.IssueDate.Year);
+                Assert.AreEqual(5, TestTicket.IssueDate.Month);
+                Assert.AreEqual(2, TestTicket.IssueDate.Day);
+            }          
+  
+            [Test]
+            public void TestRetrieveLatenessOnParticularDate()
+            {
+                LateDirectory testDirectory = new LateDirectory("testTicketID");
+                List<LateTicket> LateTicketOfADay = testDirectory.RetrieveParticularDateInfo(2014, 5, 2);
+                Assert.AreEqual(3, LateTicketOfADay.Count);
+                Assert.AreEqual("1", LateTicketOfADay[0].ID);
+                Assert.AreEqual("2", LateTicketOfADay[1].ID);
+                Assert.AreEqual("3", LateTicketOfADay[2].ID);
+            }
+
+            [Test]
+            public void TestRetrieveAllLatenessData()
+            {
+                LateDirectory testDirectory = new LateDirectory("testTicketID");
+                List<LateTicket> AllTickets = testDirectory.GetAllTickets();
+                Assert.AreEqual(7, AllTickets.Count);
+            }
+
+            [Test]
+            public void TestAmountOfLatenessByStudentID()
+            {
+                LateDirectory newDirectory = new LateDirectory("testTicketID");
+                int amount = newDirectory.CalculateLatenessAmountOfParticularStudent("20");
+                Assert.AreEqual(2, amount);
+            }
         }
     }
 }

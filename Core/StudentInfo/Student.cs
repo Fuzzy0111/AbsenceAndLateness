@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.StudentInfo;
+using System.ComponentModel.DataAnnotations;
 
 namespace Core
 {
     public class Student : Person
     {
-        public string ID;       
+        [StringLength(3)]
+        public string ID; 
+      
         public ResponsibleParty PersonResponsible { get; set; }        
         
         public Student(string studentID)

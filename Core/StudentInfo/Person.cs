@@ -7,9 +7,15 @@ namespace Core
 {
     public class Person
     {
+        #region Properties
+
         public FullName Name { get; set; }
         public ResidentialAddress HomeAddress { get; set; }
         public PhoneNumber ContactNumber { get; set; }
+
+        #endregion
+
+        #region Constructor
 
         public Person()
         { }
@@ -20,5 +26,7 @@ namespace Core
             HomeAddress = new ResidentialAddress(street, city);
             ContactNumber = new PhoneNumber();
         }
+
+        #endregion
     }
 }

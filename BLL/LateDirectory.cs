@@ -22,7 +22,7 @@ namespace BLL
             LatenessAmount = 0;
         }
 
-        public int CalculateLatenessAmount(string studentFirstName, string studentLastName)
+        public int CalculateLatenessAmountOfParticularStudent(string studentFirstName, string studentLastName)
         {
             Repository newList = new Repository();
 
@@ -34,6 +34,21 @@ namespace BLL
                     LatenessAmount += 1;
             }
             
+            return LatenessAmount;
+        }
+
+        public int CalculateLatenessAmountOfParticularStudent(string studentID)
+        {
+            Repository newList = new Repository();
+
+            List<LateTicket> aLateList = newList.MockingDataSource();
+
+            foreach (LateTicket LateStudent in aLateList)
+            {
+                if (LateStudent.StudentInfo.ID == studentID)
+                    LatenessAmount += 1;
+            }
+
             return LatenessAmount;
         }
 
@@ -51,5 +66,31 @@ namespace BLL
             }
             return tempTicket;
         }
+
+        public List<LateTicket> RetrieveParticularDateInfo(int year, int month, int day)
+        {
+            List<LateTicket> ListOfADay = new List<LateTicket>();
+
+            Repository newList = new Repository();
+
+            List<LateTicket> aLateList = newList.MockingDataSource();
+
+            foreach (LateTicket LateStudent in aLateList)
+            {
+                if (LateStudent.IssueDate.Day == day && LateStudent.IssueDate.Month == month && LateStudent.IssueDate.Year == year)
+                    ListOfADay.Add(LateStudent);
+            }
+
+            return ListOfADay;
+        }
+
+        public List<LateTicket> GetAllTickets()
+        {
+            Repository newList = new Repository();
+
+            List<LateTicket> allLateTickets = newList.MockingDataSource();
+
+            return allLateTickets;
+        }        
     }
 }
