@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.PresenceInfo;
-using Core;
-
-namespace DAL.Mocking
+﻿namespace DAL.Mocking
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Core;
+    using Core.PresenceInfo;    
+
     public class Repository
     {
         #region Mocking Data Source
@@ -46,7 +46,7 @@ namespace DAL.Mocking
             lateStudent.TimeArrived = arrivalTime;
             lateStudent.ID = "8";
 
-            List<LateTicket> mockLateList = MockingDataSource();
+            List<LateTicket> mockLateList = this.MockingDataSource();
 
             mockLateList.Add(lateStudent);
 
@@ -56,33 +56,32 @@ namespace DAL.Mocking
         public List<LateTicket> DeleteData(string ticketID)
         {
             LateTicket tempTicket = new LateTicket(ticketID);
-            List<LateTicket> mockLateList = MockingDataSource();
-            foreach(LateTicket ticket in mockLateList)
-            {
-                bool mustDelete = true;
-                mustDelete = (ticket.ID == ticketID) ;
-                if (mustDelete)
+            List<LateTicket> mockLateList = this.MockingDataSource();
+            foreach (LateTicket ticket in mockLateList)
+            {                
+                if (ticket.ID == ticketID)
                 {                   
                     tempTicket = ticket;
                 }                
             }
+
             mockLateList.Remove(tempTicket);
             return mockLateList;
         }        
 
         public List<LateTicket> EditData(string ticketID, string studentID, string studentFirstName, string studentLastName, double arrivalTimeToEdit)
         {
-            List<LateTicket> mockLateList = MockingDataSource();
-            foreach(LateTicket ticket in mockLateList)
+            List<LateTicket> mockLateList = this.MockingDataSource();
+            foreach (LateTicket ticket in mockLateList)
             {
                 if (ticket.ID == ticketID)
                 {
                     ticket.TimeArrived = arrivalTimeToEdit;
                     ticket.StudentInfo.ID = studentID;
-                    ticket.StudentInfo.Name = new FullName(studentFirstName, studentLastName);      
-                                
+                    ticket.StudentInfo.Name = new FullName(studentFirstName, studentLastName);                                
                 }
             }
+
             return mockLateList;
         }
 

@@ -1,41 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core
+﻿namespace Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class PhoneNumber
     {
-        #region Properties
-
-        [StringLength(12)]
-        public string Home { get; set; }
-
-        [StringLength(12)]
-        public string Mobile { get; set; }
-
-        [StringLength(12)]
-        public string ContactNumber { get; set; }
-
-        #endregion 
-
         #region Constructors
 
         public PhoneNumber()
-        { }
+        {
+        }
 
         public PhoneNumber(string contactNumber)
         {
-            ContactNumber = contactNumber;
+            this.ContactNumber = contactNumber;
         }
 
         public PhoneNumber(string home, string mobile)
         {
-            Home = home;
-            Mobile = mobile;
+            this.Home = home;
+            this.Mobile = mobile;
+        }
+
+        #endregion
+
+        #region Properties
+
+        public string Home 
+        { 
+            get; 
+            set; 
+        }
+
+        public string Mobile 
+        { 
+            get; 
+            set; 
+        }
+
+        public string ContactNumber 
+        { 
+            get; 
+            set; 
         }
 
         #endregion

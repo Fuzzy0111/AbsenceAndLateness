@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using System.Xml;
-using Core.PresenceInfo;
-using System.IO;
-
-namespace DAL
+﻿namespace DAL
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Data;
+    using System.Xml;
+    using Core.PresenceInfo;
+    using System.IO;
+
     public class ReadAFileRepository: IReadAFileRepository
     {
         public string FilePath { get; set; }

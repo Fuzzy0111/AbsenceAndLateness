@@ -32,7 +32,7 @@ namespace Test
                 TestRepository = new Repository();
                 TestPerson = new Person("first", "second", "street", "city");
                 TestTicket = new LateTicket("testTicketID");
-                TestTicketIssue = new LateTicket("testTicketID", 2014, 5, 19, "1402", "Jane", "Mart", 08.35);
+                TestTicketIssue = new LateTicket("testTicketID", 2014, 5, 19, "13", "Jane", "Mart", 08.35);
                 TestStudent = new Student("testID");
                 TestRelative = new ResponsibleParty("first", "last", "testNumber", "testStreet", "testCity");
             }
@@ -108,6 +108,14 @@ namespace Test
             {
                 TestStudent.ID = "10";
                 Assert.NotNull(TestStudent.ID);
+            }
+
+            [Test]
+            public void TestStudentIDCannotBeMoreThan3Characters()
+            {
+                TestStudent.ID = "1232224445545";
+                Assert.NotNull(TestStudent.ID);
+                Assert.AreEqual("123", TestStudent.ID);
             }
 
             [Test]

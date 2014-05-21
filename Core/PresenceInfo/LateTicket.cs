@@ -1,48 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.PresenceInfo
+﻿namespace Core.PresenceInfo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class LateTicket
-    {
-        #region Properties
-
-        public string ID { get; set; }
-        //public Date IssueDate { get; set; }
-        public DateTime IssueDate { get; set; }
-        public Student StudentInfo { get; set; }
-        public double TimeArrived { get; set; }
-
-        #endregion
-
+    {      
         #region Constructor
 
-        public LateTicket(string ID)
+        public LateTicket(string iD)
         {
-            this.ID = ID;
+            this.ID = iD;
         }
 
-        #endregion
-
-        #region Public Methods
-
-        public LateTicket(string ID, string studentID)
+        public LateTicket(string iD, string studentID)
         {
-            this.ID = ID;
-            StudentInfo = new Student(studentID);
+            this.ID = iD;
+            this.StudentInfo = new Student(studentID);
+        }
+
+        public LateTicket(string iD, int year, int month, int day, string studentID, string firstName, string lastName, double timeArrived)
+        {
+            this.ID = iD;
+            this.IssueDate = new DateTime(year, month, day);
+            this.StudentInfo = new Student(studentID, firstName, lastName);
+            this.TimeArrived = timeArrived;
         }  
-        
-        public LateTicket(string ID, int year, int month, int day, string studentID, string firstName, string lastName, double timeArrived)
-        {
-            this.ID = ID;
-            IssueDate = new DateTime(year, month, day);
-            StudentInfo = new Student(studentID, firstName, lastName);            
-            TimeArrived = timeArrived;
-        }
 
         #endregion
+
+        #region Properties
+
+        public string ID 
+        { 
+            get; 
+            set; 
+        }        
+       
+        public DateTime IssueDate 
+        { 
+            get; 
+            set; 
+        }
+
+        public Student StudentInfo 
+        { 
+            get; 
+            set; 
+        }
+
+        public double TimeArrived 
+        { 
+            get; 
+            set; 
+        }
+
+        #endregion               
     }
 }
